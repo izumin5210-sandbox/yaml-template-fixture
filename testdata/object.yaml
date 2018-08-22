@@ -1,0 +1,18 @@
+id: {{seq "userID"}}
+name: user-{{.id}}
+registered: {{.registered}}
+{{if .registered}}
+posts:
+  {{range .postCount}}
+  - id: {{seq "postID"}}
+    user_id: {{.parent.id}}
+    title: 'This is a post {{.id}} by {{.parent.name}}'
+    created_at: {{now}}
+    tags:
+      - foo
+      - bar
+  {{end}}
+{{end}}
+prefernece:
+  searchable: true
+  reviewable: false
