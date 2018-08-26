@@ -1,13 +1,13 @@
-id: {{seq "userID"}}
+id: {{Seq "userID"}}
 name: user-{{.id}}
-registered: {{.registered}}
+registered: false
 {{if .registered}}
 posts:
   {{range .postCount}}
-  - id: {{seq "postID"}}
+  - id: {{Seq "postID"}}
     user_id: {{.parent.id}}
     title: 'This is a post {{.id}} by {{.parent.name}}'
-    created_at: {{now}}
+    created_at: {{Now}}
     tags:
       - foo
       - bar
