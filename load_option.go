@@ -4,6 +4,14 @@ type Params map[string]interface{}
 
 type LoadOption func(Params)
 
+func createParams(opts []LoadOption) Params {
+	params := Params{}
+	for _, f := range opts {
+		f(params)
+	}
+	return params
+}
+
 func WithParams(params Params) LoadOption {
 	return func(prevParams Params) {
 		for k, v := range params {
